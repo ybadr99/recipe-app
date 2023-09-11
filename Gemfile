@@ -67,10 +67,6 @@ group :development do
   # gem "spring"
 end
 
-group :production do
-  gem 'pg'
-end
-
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
@@ -78,3 +74,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "bootstrap", "~> 5.3"
+
+gem "sassc-rails", "~> 2.1"

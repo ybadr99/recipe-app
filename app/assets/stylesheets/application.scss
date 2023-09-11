@@ -1,0 +1,36 @@
+@import "bootstrap";
+
+h1 {
+  font-size: 1.75rem;
+  font-weight: 500;
+  line-height: 1.2;
+  align-items: center;
+  text-decoration: underline;
+}
+
+p.alert {
+  font-size: larger;
+  line-height: 1.2;
+  padding: 0.5em;
+}
+
+hr {
+  width: auto;
+  height: 3.5px !important;
+  background-color: #000;
+  padding: 0;
+  margin-top: 0.25rem !important;
+  margin-bottom: 0 !important;
+  top: 20px;
+  border: none;
+  border-radius: 35%;
+}
+
+.no-record {
+  font-size: 1.35rem;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
+  margin-top: 45px;
+  color: blue;
+}
