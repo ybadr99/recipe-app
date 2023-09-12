@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     resources :recipe_foods, only: %i[new create edit update destroy]
   end
 
+  resources :foods do
+    resources :recipe_foods, only: %i[new create edit update destroy]
+  end
+
   get '/general_shopping_list', to: 'recipes#shopping_list', as: 'general_shopping_list'
   get '/toggle_public/:id', to: 'recipes#toggle_public', as: 'toggle_public'
 end
