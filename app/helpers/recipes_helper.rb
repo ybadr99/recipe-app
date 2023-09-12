@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RecipesHelper
   def notice_message
     url = Rails.application.routes.recognize_path(request.referrer)
