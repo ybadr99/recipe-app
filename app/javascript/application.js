@@ -6,8 +6,5 @@ import "popper"
 
 import "bootstrap"
 
-//= require jquery
-//= require popper
-//= require turbolinks
-//= require bootstrap
-//= require_tree.
+import * as bootstrap from 'bootstrap'
+window.Modal = bootstrap.Modal;
