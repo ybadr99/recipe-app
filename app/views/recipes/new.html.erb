@@ -1,15 +1,5 @@
-<div class="container">
-  <div class="row d-flex justify-content-center">
-    <div class="col-md-6 mt-4 p-2">
-      <div class="modal-header">
-        <h5 class="modal-title text-center">Add New Recipe</h5>
-        <%= link_to 'X', recipes_path, class: 'btn btn-sl mt-4 px-3' %>
-      </div>
+<%= render "remote_modal", title: "Add New Recipe" do %>
 
-      <div class="modal-body">
-        <%= render 'form', recipe: @recipe %>
-      </div>
-      
-    </div>
-  </div>
-</div>
+  <%= render "form" %>
+  
+<% end %>
