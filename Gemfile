@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -83,4 +81,4 @@ gem 'sassc-rails', '~> 2.1'
 
 gem 'popper_js', '~> 2.11.8'
 
-gem "rubocop", "~> 1.56"
+gem 'rubocop', '~> 1.56'

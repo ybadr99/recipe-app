@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Recipe < ApplicationRecord
   validates :name, presence: true, uniqueness: true, length: { minimum: 3, maximum: 50 }
   validates :preparation_time, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
