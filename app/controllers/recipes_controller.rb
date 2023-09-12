@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
   include RecipesHelper
 
   def index
-    @recipes = Recipe.includes(:recipe_foods)
+    @recipes = Recipe.all
     flash.delete(:notice) unless request.referrer == new_recipe_url
   end
 
@@ -19,7 +19,7 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.user_id = current_user.id
+    @recipe.user_id = 1
     @recipe.public = params[:public] == 'Public'
 
     respond_to do |format|
@@ -57,8 +57,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
 
     respond_to do |format|
-      if can? :destroy, @recipe
-        @recipe.destroy
+      if @recipe.destroy
         format.html { redirect_to recipes_path, notice: 'Recipe was successfully deleted.' }
         format.json { head :no_content }
       else
