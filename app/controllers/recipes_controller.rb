@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all
-    flash.delete(:notice) unless request.referrer == new_recipe_url
+    notice_message
   end
 
   def show
@@ -15,6 +15,10 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
+    respond_to do |format|
+      format.html { render :new }
+      format.js { render :new }
+    end
   end
 
   def create

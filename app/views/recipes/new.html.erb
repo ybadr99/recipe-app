@@ -1,8 +1,15 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
     <div class="col-md-6 mt-4 p-2">
-      <h1 class="text-center">New Recipe</h1>
-      <%= render 'form' %>
+      <div class="modal-header">
+        <h5 class="modal-title text-center">Add New Recipe</h5>
+        <%= link_to 'X', recipes_path, class: 'btn btn-sl mt-4 px-3' %>
+      </div>
+
+      <div class="modal-body">
+        <%= render 'form', recipe: @recipe %>
+      </div>
+      
     </div>
   </div>
 </div>
