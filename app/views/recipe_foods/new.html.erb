@@ -1,0 +1,10 @@
+<%= render "remote_modal", title: "Add Ingrident" do %>
+
+  <% unless @foods.empty? %>
+    <%= render "form" %>
+  <% else %>
+    <div>
+      <p>There are no foods in the database. <%= link_to "Add one now", new_food_path %>.</p>
+    </div>
+  <% end %>
+<% end %>
