@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
   include RecipesHelper
 
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.includes(:recipe_foods)
     notice_message
   end
 
