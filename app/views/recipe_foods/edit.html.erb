@@ -1,43 +1,5 @@
-<div class="container">
-  <div class="row d-flex justify-content-center">
-    <div class="col-md-6 mt-4 p-2">
-      <h1 class="text-center">
-          Edit Ingredient for Recipe
-        </h1>
+<%= render "partials/remote_modal", title: "Edit Ingrident" do %>
 
-      <%= form_with(model: @recipe_food, url: recipe_recipe_food_path, local: true) do |form| %>
-        <div class = "mt-4 p-2">
-          <label>Food</lable>
-          <%= form.hidden_field :recipe_id, value: @recipe_food.recipe_id %>
-          <%= form.collection_select :food_id, @foods, :id, :name, { prompt: '.. Select a Food ..' }, id: 'food-select'%>
-          
-          <% if @recipe_food.errors.any? %>
-            <p class="text-danger mb-0">
-              <%= @recipe_food.errors[:food_id].first %>
-            </p>
-          <% end %>
-        </div>
-      
-        <div class = "mt-2 p-2">
-          <label class="form-label">Quantity</lable>
-          <%= form.number_field :quantity,
-            autofocus: true,
-            autocomplete: 'quantity',
-            placeholder: 'Quantity in grams',
-            class: 'form-control'
-          %>
-          <% if @recipe_food.errors.any? %>
-            <p class="text-danger mb-0">
-              <%= @recipe_food.errors[:quantity].first %>
-            </p>
-          <% end %>
-        </div>
-      
-        <div class="actions text-center">
-          <%= form.submit class: 'btn btn-outline-dark btn-sm mt-4 px-3' %>
-          <%= link_to 'Cancel', recipe_path(@recipe_food.recipe_id), class: "btn btn-outline-dark btn-sm mt-4 px-3" %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</div>
+  <%= render "edit" %>
+
+<% end %>

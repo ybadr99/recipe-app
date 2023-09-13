@@ -4,6 +4,7 @@
       <h1 class="text-center">
         <%= @recipe.name %>
       </h1>
+      
       <% if notice %>
         <p class="alert alert-success"><%= notice %></p>
       <% end %>
@@ -38,7 +39,6 @@
             Generate shopping list
           </button>
         </div>
-        <%= render partial: 'modal_structure' %>
        
         <div class="add-btn">
           <%= link_to 'Add ingredient', new_recipe_recipe_food_path(recipe_id: @recipe.id), class: 'btn btn-primary' %>
