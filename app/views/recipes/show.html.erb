@@ -81,9 +81,7 @@
                 </td>
                 <td class="d-flex justify-content-center justify-content-around">
                   <%= link_to 'Modify', edit_recipe_recipe_food_path(@recipe, food_recipe), class: 'btn btn-danger btn-sm' %>
-                  <%= form_with(url: recipe_recipe_food_path(@recipe, food_recipe), method: :delete, data: { confirm: 'Are you sure?' }) do |f| %>
-                    <%= f.submit 'Remove', class: 'btn btn-danger btn-sm' %>
-                  <% end %>
+                    <%= button_to "Remove", recipe_recipe_food_path(@recipe, food_recipe), class: "btn btn-danger", method: :delete, data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" } %>
                 </td>
               </tr>
             <% end %>

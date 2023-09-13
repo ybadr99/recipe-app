@@ -1,0 +1,7 @@
+<%= render "partials/remote_modal", title: "Edit Food" do %>
+
+  <%= form_with(model: @food, url: food_path(@food), local: true) do |form| %>
+    <%= render "form", form: form %>
+  <% end %>
+  
+<% end %>

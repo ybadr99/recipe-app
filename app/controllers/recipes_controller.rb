@@ -1,5 +1,4 @@
 class RecipesController < ApplicationController
-  load_and_authorize_resource
   include RecipesHelper
 
   def index
@@ -39,23 +38,7 @@ class RecipesController < ApplicationController
 
   def edit; end
 
-  def update
-    @recipe = Recipe.find(params[:id])
-    @recipe.update recipe_params
-
-    @recipe.public = params[:public] == 'Public'
-
-    @recipe.save
-    respond_to do |format|
-      if @recipe.update(recipe_params)
-        format.html { redirect_to recipes_path, notice: 'Recipe was successfully updated.' }
-        format.json { render :show, status: :created, location: @recipe }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @recipe.errors, status: unprocessable_entity }
-      end
-    end
-  end
+  def update; end
 
   def destroy
     @recipe = Recipe.find(params[:id])
@@ -69,6 +52,10 @@ class RecipesController < ApplicationController
         format.json { render json: @recipe.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def public_recipes
+    @recipes = Recipe.where(public: true)
   end
 
   def toggle_public

@@ -1,7 +1,7 @@
-<%= render "partials/remote_modal", title: "Add New Food" do %>
-
+<%= turbo_stream.update "remote_modal_body" do %>
+  
   <%= form_with(model: @food, url: foods_path, local: true) do |form| %>
     <%= render "form", form: form %>
   <% end %>
-  
+
 <% end %>

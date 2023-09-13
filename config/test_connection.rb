@@ -1,8 +1,6 @@
 require 'active_record'
-
 # Load your Rails application's environment
 require_relative 'environment'
-
 # Test the database connection
 begin
   ActiveRecord::Base.connection

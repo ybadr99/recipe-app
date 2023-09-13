@@ -11,7 +11,7 @@
       <% else %>
         <p class="text-center mt-4">
           No foods available. Please add a food first. <br>
-          <%= link_to 'Add a Food', new_food_path %>
+          <%= link_to 'Add a Food', new_food_path, data: { turbo_frame: "remote_modal" } %>
         </p>
         <div class="actions text-end mt-4">
           <%= link_to 'Cancel', recipe_path(@recipe), class: "btn btn-dark btn-sm px-3" %>
