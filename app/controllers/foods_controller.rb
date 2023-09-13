@@ -1,6 +1,6 @@
 class FoodsController < ApplicationController
   include FoodsHelper
-  
+
   def index
     notice_message
     @foods = Food.all

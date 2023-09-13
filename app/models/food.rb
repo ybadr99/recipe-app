@@ -5,7 +5,7 @@ class Food < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true, length: { minimum: 3, maximum: 50 }
   validates :measurement_unit, presence: true, length: { minimum: 3, maximum: 10 }
-  validates :price, presence: true, numericality: { greater_than: 0, less_than: BigDecimal(10**3) }, 
-          format: { with: /\A\d+(?:\.\d{0,2})?\z/ }
+  validates :price, presence: true, numericality: { greater_than: 0, less_than: BigDecimal(10**3) },
+                    format: { with: /\A\d+(?:\.\d{0,2})?\z/ }
   validates :quantity, presence: true, numericality: { greater_than: 0 }
 end
