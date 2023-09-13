@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'home#index'
 
+  resources :foods, only: [:index, :destroy, :new, :create]
+
   resources :recipes do
     resources :recipe_foods, only: %i[create destroy]
   end
 end
+
+
