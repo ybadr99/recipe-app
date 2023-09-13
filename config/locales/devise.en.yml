@@ -49,6 +49,12 @@ en:
       signed_in: "Signed in successfully."
       signed_out: "Signed out successfully."
       already_signed_out: "Signed out successfully."
+      email_cannot_be_blank: "Email cannot be blank."
+      email_invalid: "Email is invalid."
+      email_not_found: "Email not found."
+      password_cannot_be_blank: "Password cannot be blank."
+      password_invalid: "Password is invalid."
+      password_not_found: "Password not found."
     unlocks:
       send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."

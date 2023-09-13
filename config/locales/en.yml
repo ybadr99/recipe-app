@@ -33,6 +33,22 @@ en:
   activerecord:
     errors:
       models:
+        user:
+          attributes:
+            name:
+              blank: "User name can't be blank"
+              too_short: "User name is too short (minimum is 3 characters)"
+              too_long: "User name is too long (maximum is 20 characters)"
+              taken: "User name already exists"
+            email:
+              blank: "Email can't be blank"
+              taken: "Email already exists"
+            password:
+              blank: "Password can't be blank"
+              too_short: "Password is too short (minimum is 6 characters)"
+            password_confirmation:
+              blank: "Password confirmation can't be blank"
+              confirmation: "Password confirmation doesn't match"              
         recipe:
           attributes:
             name:
