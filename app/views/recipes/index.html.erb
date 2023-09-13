@@ -26,9 +26,9 @@
       <% if @recipes.any? %>
         <% @recipes.each do |recipe| %>
           <div class="row border mb-4">
-            <div class="col-4 p-2 text-start">
+            <div class="col-4 py-3 ps-4 text-start">
               <%= link_to recipe.name, recipe_path(recipe), class: 'nav-link mb-3 fs-4 link-dark'%>
-                <%= button_to "Remove", recipe_path(recipe), method: :delete, data: { confirm: "Are you sure you want to delete this inventory?" }, class: 'btn btn-danger mx-3 fs-5 p-1 custom-button-width' %>
+                <%= button_to "Remove", recipe_path(recipe), method: :delete, data: { confirm: "Are you sure you want to delete this inventory?" }, class: 'btn btn-danger fs-5 p-1 custom-button-width' %>
               </div>
             <div class="col p-2 text-start">
               <p><%= recipe.description %></p>
