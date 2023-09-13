@@ -2,15 +2,13 @@ class RecipesController < ApplicationController
   include RecipesHelper
 
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.includes(:recipe_foods)
     notice_message
   end
 
   def show
     notice_message
-    @recipe = Recipe.includes(:recipe_foods).find(params[:id])
-
-    render :show
+    @recipe = Recipe.find(params[:id])
   end
 
   def new
