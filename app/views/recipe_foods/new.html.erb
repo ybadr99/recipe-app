@@ -1,10 +1,23 @@
-<%= render "partials/remote_modal", title: "Add Ingrident" do %>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-4 mt-5 p-2 border shadow-lg bg-white rounded">
+      <h4 class="text-center"><%= @recipe.name %></h4>
+      <h5 class="text-center">
+          Add Ingredient
+      </h5>
 
-  <% unless @foods.empty? %>
-    <%= render "new" %>
-  <% else %>
-    <div>
-      <p>There are no foods in the database. <%= link_to "Add one now", new_food_path %>.</p>
+      <% unless @foods.empty? %>
+        <%= render 'new' %>
+      <% else %>
+        <p class="text-center mt-4">
+          No foods available. Please add a food first. <br>
+          <%= link_to 'Add a Food', new_food_path %>
+        </p>
+        <div class="actions text-end mt-4">
+          <%= link_to 'Cancel', recipe_path(@recipe), class: "btn btn-dark btn-sm px-3" %>
+        </div>
+      <% end %>
+
     </div>
-  <% end %>
-<% end %>
+  </div>
+</div>

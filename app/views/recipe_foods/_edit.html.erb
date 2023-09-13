@@ -1,7 +1,8 @@
-<%= form_with(model: @recipe_food, url: recipe_ingrident_edit_path, local: true) do |form| %>
-  <div class = "d-flex flex-column p-2">
-    <label>Food</lable>
-    <%= form.hidden_field :recipe_id, value: @recipe_food.recipe_id %>
+
+<%= form_with(model: @recipe_food, url: recipe_recipe_food_path, local: true) do |form| %>
+  <div class = "p-2">
+    <label for="food_id" class="form-label">Food</label>
+    <%= form.hidden_field :recipe_id, value: @recipe.id %>
     <%= form.collection_select :food_id, @foods, :id, :name, { prompt: '.. Select a Food ..' }, id: 'food-select'%>
     
     <% if @recipe_food.errors.any? %>
@@ -11,8 +12,8 @@
     <% end %>
   </div>
 
-  <div class = "d-flex flex-column mt-2 p-2">
-    <label>Quantity</label>
+  <div class = "mt-2 p-2">
+    <label for="quantity" class="form-label">Quantity</label>
     <%= form.number_field :quantity,
       autofocus: true,
       autocomplete: 'quantity',
@@ -26,8 +27,8 @@
     <% end %>
   </div>
 
-  <div class="actions d-flex justify-content-sm-between mt-4">
+  <div class="actions text-center mt-4">
     <%= form.submit 'Save', class: 'btn btn-dark btn-sm px-4' %>
-    <%= link_to 'Cancel', recipe_path(@recipe_food.recipe_id), class: "btn btn-dark btn-sm px-3" %>
+    <%= link_to 'Cancel', recipe_path(@recipe), class: "btn btn-dark btn-sm px-3" %>
   </div>
 <% end %>

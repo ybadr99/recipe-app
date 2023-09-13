@@ -1,5 +1,5 @@
-<%= form_with(model: @recipe_food, url: recipe_ingrident_create_path, local: true) do |form| %>
-  <div class = "mt-2 p-2">
+<%= form_with(model: @recipe_food, url: recipe_recipe_foods_path, local: true) do |form| %>
+  <div class = "mt-4 p-2">
     <%= form.hidden_field :recipe_id, value: @recipe.id %>
     <%= form.collection_select :food_id, @foods, :id, :name, { prompt: '.. Select a Food ..' }, id: 'food-select'%>
 
@@ -10,7 +10,7 @@
     <% end %>
   </div>
 
-  <div class = "mt-4 p-2">
+  <div class = "mt-2 p-2">
     <%= form.number_field :quantity,
         autofocus: true,
         autocomplete: 'quantity',
@@ -24,8 +24,8 @@
     <% end %>
   </div>
 
-  <div class="actions d-flex justify-content-sm-between mt-4">
-    <%= form.submit 'Add Ingrident', class: 'btn btn-dark btn-sm px-3' %>
-    <%= link_to 'Cancel', recipe_path(@recipe), class: "btn btn-dark btn-sm px-4" %>
+  <div class="actions text-center mt-4">
+    <%= form.submit 'Add', class: 'btn btn-dark btn-sm  px-4' %>
+    <%= link_to 'Cancel', recipe_path(@recipe), class: "btn btn-dark btn-sm px-3" %>
   </div>
 <% end %>
