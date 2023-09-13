@@ -80,3 +80,5 @@ gem 'sassc-rails', '~> 2.1'
 gem 'popper_js', '~> 2.11.8'
 
 gem 'rubocop', '~> 1.56'
+
+gem 'devise', '~> 4.9'
