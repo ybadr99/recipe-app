@@ -21,24 +21,26 @@ class RecipeFoodsController < ApplicationController
         @foods = Food.all
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @recipe_food.errors, status: :unprocessable_entity }
-        format.turbo_stream { render :form_update, status: :unprocessable_entity }
       end
     end
   end
 
   def edit
     @recipe_food = RecipeFood.find(params[:id])
+    @recipe = Recipe.find(@recipe_food.recipe_id)
     @foods = Food.all
   end
 
   def update
     @recipe_food = RecipeFood.find(params[:id])
+    @recipe = Recipe.find(@recipe_food.recipe_id)
 
     respond_to do |format|
       if @recipe_food.update(recipe_food_params)
-        format.html { redirect_to recipes_path, notice: 'Recipe Food was successfully updated.' }
+        format.html { redirect_to recipe_path(@recipe_food.recipe_id), notice: 'Recipe Food was successfully updated.' }
         format.json { render :show, status: :created, location: @recipe_food }
       else
+        @foods = Food.all
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @recipe_food.errors, status: :unprocessable_entity }
       end
