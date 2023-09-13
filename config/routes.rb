@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'home#index'
 
+  resources :foods, only: [:index, :destroy, :new, :create]
+
   resources :recipes do
     resources :recipe_foods, only: %i[new create edit update destroy]
   end
@@ -17,3 +19,5 @@ Rails.application.routes.draw do
   get '/general_shopping_list', to: 'recipes#shopping_list', as: 'general_shopping_list'
   get '/toggle_public/:id', to: 'recipes#toggle_public', as: 'toggle_public'
 end
+
+
