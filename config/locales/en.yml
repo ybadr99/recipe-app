@@ -69,6 +69,24 @@ en:
             public:
               blank: "Public can't be blank"
               value: "Public must be true or false"
+        food:
+          attributes:
+            name:
+              blank: "Food name can't be blank"
+              too_short: "Food name is too short (minimum is 3 characters)"
+              too_long: "Food name is too long (maximum is 50 characters)"
+              taken: "Food name already exists"
+            measurement_unit:
+              blank: "Measurement unit can't be blank"
+              too_short: "Measurement unit is too short (minimum is 1 character)"
+              too_long: "Measurement unit is too long (maximum is 10 characters)"
+            price:
+              blank: "Price can't be blank"
+              too_small: "Price must be greater than 0"     
+            quantity:
+              blank: "Quantity can't be blank"
+              minimum: "Quantity must be greater than 0"
+              too_long: "Quantity is too long (maximum is 1000)"
         recipe_food:
           attributes:
             food_id:
