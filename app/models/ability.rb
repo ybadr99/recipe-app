@@ -9,7 +9,8 @@ class Ability
       return unless user.present?
 
       can :read, :public_recipes
-      
+      can :read, Recipe, public: true
+    
       can :manage, Recipe, user_id: user.id
       can :manage, Food, user_id: user.id
       can :manage, RecipeFood, recipe: { user_id: user.id }
