@@ -55,7 +55,7 @@ class RecipesController < ApplicationController
   end
 
   def public_recipes
-    @recipes = Recipe.where(public: true)
+    @public_recipes = User.includes(:recipes, :recipe_foods).where(recipes: { public: true })
   end
 
   def toggle_public
