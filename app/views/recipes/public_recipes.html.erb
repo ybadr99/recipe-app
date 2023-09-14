@@ -5,7 +5,7 @@
 
       <% if @public_recipes.empty? %>
         <p class="alert alert-info">
-          There are no public recipes yet. 
+          No public recipes added yet by any user. 
           <%= link_to 'Create one', new_recipe_path, data: { turbo_frame: "remote_modal" } %>
         </p>
       <% else %>

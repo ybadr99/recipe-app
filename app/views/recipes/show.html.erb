@@ -15,15 +15,17 @@
           <%= @recipe.preparation_time %>
           <%= @recipe.preparation_time > 1 ? 'hours' : 'hour' %> 
         </span>
-        <div data-controller="recipe"
-            data-recipe-update-url="<%= recipe_path(@recipe) %>"
-            class="form-check form-switch form-check-reverse"> 
-          <input type="checkbox" 
-              data-action="recipe#toggle" data-target = "public"
-              class="form-check-input" id="flexSwitchCheckReverse"
-                <% if @recipe.public %> checked <% end %>>
-          <label class="form-check-label" for="flexSwitchCheckReverse">Public</label>
-        </div>
+        <% if can? :manage, @recipe %>
+          <div data-controller="recipe"
+              data-recipe-update-url="<%= recipe_path(@recipe) %>"
+              class="form-check form-switch form-check-reverse"> 
+            <input type="checkbox" 
+                data-action="recipe#toggle" data-target = "public"
+                class="form-check-input" id="flexSwitchCheckReverse"
+                  <% if @recipe.public %> checked <% end %>>
+            <label class="form-check-label" for="flexSwitchCheckReverse">Public</label>
+          </div>
+        <% end %>
       </div>
 
       <span class="d-block mb-3">
@@ -37,10 +39,11 @@
         <div class="add-btn">
           <%= link_to 'Generate Shopping List', general_shopping_list_path, class: 'btn btn-secondary' %>
         </div>
-       
-        <div class="add-btn">
-          <%= link_to 'Add ingredient', new_recipe_recipe_food_path(recipe_id: @recipe.id), class: 'btn btn-primary' %>
-        </div>
+        <% if can? :manage, @recipe %>
+          <div class="add-btn">
+            <%= link_to 'Add ingredient', new_recipe_recipe_food_path(recipe_id: @recipe.id), class: 'btn btn-primary' %>
+          </div>
+        <% end %>
       </div>
 
       <hr/>
@@ -78,8 +81,12 @@
                   <% end %>
                 </td>
                 <td class="d-flex justify-content-center justify-content-around">
-                  <%= link_to 'Modify', edit_recipe_recipe_food_path(@recipe, food_recipe), class: 'btn btn-danger btn-sm' %>
+                  <% if can? :manage, @recipe %>
+                    <%= link_to 'Modify', edit_recipe_recipe_food_path(@recipe, food_recipe), class: 'btn btn-danger btn-sm' %>
                     <%= button_to "Remove", recipe_recipe_food_path(@recipe, food_recipe), class: "btn btn-danger", method: :delete, data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" } %>
+                  <% else %>
+                    NA
+                  <% end %>
                 </td>
               </tr>
             <% end %>
