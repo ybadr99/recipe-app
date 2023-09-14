@@ -25,7 +25,7 @@
 
 # 📖 [Recipe App] <a name="about-project"></a>
 
-Recipe App is a web application that allows users to create and share recipes with other users. Users can create an account, login to the app and create, edit, and delete their recipes. Users can also view recipes created by other users.
+Recipe App is a web application that allows users to create and share recipes with other users. Users can create an account, log in to the app, and then create, edit, and delete their recipes. Also, users can add foods and set the recipes public or private. Moreover, users can also view public recipes created by other users.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -34,7 +34,7 @@ Recipe App is a web application that allows users to create and share recipes wi
 <details>
   <summary>Client</summary>
   <ul>
-    <li><a href="https://reactjs.org/">Rails</a></li>
+    <li><a href="https://rubyonrails.org/">Ruby on Rails</a></li>
   </ul>
 </details>
 
@@ -45,8 +45,8 @@ Recipe App is a web application that allows users to create and share recipes wi
 
 - Login and Signup pages
 - Use of active record models
-- Add food, recipe, inventory
-- View recipes, foods and inventory
+- Add food, recipe, ingredients
+- View recipes, foods, and general shopping list
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -65,18 +65,22 @@ Clone this repository to your desired folder by following the below steps
 - Clone the project to your directory by running
 
 ```sh
-  git clone https://github.com/Microverse-Fullstack-Program/rails-blog-app-v2
+  git clone https://github.com/ybadr99/recipe-app
 ```
-- cd rails-blog-app-v2
+- cd recipe-app
 
 ### Prerequisites 
 
 In order to run this project you need [Ruby](https://www.ruby-lang.org/en/) and [Ruby on Rails](https://rubyonrails.org/) installed on your machine.
 
-In addition you need the following tech stack
+In addition, you need the following tech stack
+- Ruby on rails
 - npm
-- PostgreSQL
-- rails RSpec 
+- PostgreSQL 
+- rails RSpec
+- Bootstrap
+- Devise for authentication
+- CanCanCan for authorization
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -84,13 +88,13 @@ In addition you need the following tech stack
 
 Install this project with:
 
-cd 'project name'
-
-"npm i" to install all dependencies
-
-"bundle install" to install all gems
-
-"rails s" to run the server
+    1) cd 'project name'
+    
+    2) "npm i" to install all dependencies
+    
+    3) "bundle install" to install all gems
+    
+    4) "rails s" to run the server
 
 ### Run tests
 
@@ -120,10 +124,8 @@ cd 'project name'
 
 ## 🔭 Future Features <a name="future-features"></a>
 
--   [Add better Navigation]
 -   [Improve the UX]
 -   [Add responsiviness]
-
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
