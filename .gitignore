@@ -36,5 +36,3 @@
 
 # .gitignore
 node_modules/
-
-database.yml
