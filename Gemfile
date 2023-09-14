@@ -82,3 +82,5 @@ gem 'popper_js', '~> 2.11.8'
 gem 'rubocop', '~> 1.56'
 
 gem 'devise', '~> 4.9'
+
+gem 'cancancan', '~> 3.5'
