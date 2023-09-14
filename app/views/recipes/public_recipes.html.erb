@@ -17,13 +17,14 @@
                 <span class="mb-3">By: <%= public_recipe.name %></span>
               </div>
               <div class="d-flex flex-column col text-end p-4">
-                <span>Total food items: <%= recipe.recipe_foods.count %></span>
-                <span>Total quantities: <%= recipe.recipe_foods.sum(:quantity) %></span>
-                <span>Total price: 
-                  <%= recipe.recipe_foods.sum do |recipe_food|
-                      recipe_food.quantity * recipe_food.food.price
-                    end
-                  %>
+                <span class="py-1">Total food items: <strong><%= recipe.recipe_foods.count %></strong></span>
+                <span class="py-1">Total quantities: <strong><%= recipe.recipe_foods.sum(:quantity) %> </strong></span>
+                <span class="py-1">Total price: 
+                  <strong> 
+                      <%= recipe.recipe_foods.sum do |recipe_food|
+                        recipe_food.quantity * recipe_food.food.price
+                      end %>
+                  </strong>
                 </span>
               </div>
             </div>
