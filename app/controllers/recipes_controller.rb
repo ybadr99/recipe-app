@@ -62,9 +62,17 @@ class RecipesController < ApplicationController
   end
 
   def toggle_public
-    @recipe = current_user.recipes.find_by(id: params[:id])
-    @recipe&.update(public: !@recipe.public)
-    redirect_to request.referrer || root_path
+    @recipe = Recipe.find(params[:id])
+    @recipe.toggle!(:public)
+    respond_to do |format|
+      if @recipe.save
+        format.html { redirect_to recipes_path, notice: 'Recipe was successfully updated.' }
+        format.json { render :show, status: :created, location: @recipe }
+      else
+        format.html { redirect_to recipes_path, alert: 'Recipe was not updated.' }
+        format.json { render json: @recipe.errors, status: unprocessable_entity }
+      end
+    end
   end
 
   def general_shopping_list
