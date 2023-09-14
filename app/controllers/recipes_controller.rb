@@ -9,7 +9,7 @@ class RecipesController < ApplicationController
 
   def show
     notice_message
-    @recipe = Recipe.find(params[:id]).where(user_id: current_user.id)
+    @recipe = Recipe.find(params[:id])
   end
 
   def new
@@ -22,7 +22,7 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.user_id = 1
+    @recipe.user = current_user
     @recipe.public = params[:public] == 'Public'
 
     respond_to do |format|
@@ -57,7 +57,7 @@ class RecipesController < ApplicationController
   end
 
   def public_recipes
-    @public_recipes = User.includes(:recipes, :recipe_foods).where(recipes: { public: true })
+    @public_recipes = User.includes(:recipes, :recipe_foods).where(recipes: { public: true }).order('recipes.created_at DESC')
   end
 
   def toggle_public
@@ -68,9 +68,6 @@ class RecipesController < ApplicationController
 
   def general_shopping_list
     @shopping_list = Food.includes(:recipe_foods).where(recipe_foods: { recipe_id: nil })
-    puts '===================='
-    puts @shopping_list.inspect
-    puts '===================='
   end
 
   private
