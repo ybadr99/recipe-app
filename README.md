@@ -55,7 +55,7 @@ Recipe App is a web application that allows users to create and share recipes wi
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
-> To get a local copy up and running, follow these steps.
+> To get a local copy and running, follow these steps.
 
 ### Setup
 
