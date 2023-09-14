@@ -12,9 +12,7 @@ Rails.application.routes.draw do
   resources :foods
 
   get '/public_recipes', to: 'recipes#public_recipes', as: 'public_recipes'
-
-  get '/general_shopping_list', to: 'recipes#shopping_list', as: 'general_shopping_list'
-  get '/toggle_public/:id', to: 'recipes#toggle_public', as: 'toggle_public'
+  get '/general_shopping_list', to: 'recipes#general_shopping_list', as: 'general_shopping_list'
 end
 
 

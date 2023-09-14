@@ -1,9 +1,10 @@
 class FoodsController < ApplicationController
+  load_and_authorize_resource
   include FoodsHelper
 
   def index
     notice_message
-    @foods = Food.all
+    @foods = Food.all.where(user_id: current_user.id)
   end
 
   def new
@@ -16,7 +17,7 @@ class FoodsController < ApplicationController
 
   def create
     @food = Food.new(food_params)
-    @food.user_id = 1
+    @food.user = current_user
     respond_to do |format|
       if @food.save
         format.html { redirect_to foods_path, notice: 'Food item was successfully created.' }
@@ -53,8 +54,16 @@ class FoodsController < ApplicationController
 
   def destroy
     @food = Food.find(params[:id])
-    @food.destroy
-    redirect_to foods_path, notice: 'Food item was successfully deleted.'
+    respond_to do |format|
+      if can? :destroy, @food
+        @food.destroy
+        format.html { redirect_to foods_path, notice: 'Food item was successfully deleted.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to foods_path, alert: 'Food item was not deleted.' }
+        format.json { render json: @food.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private
