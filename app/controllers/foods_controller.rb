@@ -1,9 +1,10 @@
 class FoodsController < ApplicationController
+  load_and_authorize_resource
   include FoodsHelper
 
   def index
     notice_message
-    @foods = Food.all
+    @foods = Food.all.where(user_id: current_user.id)
   end
 
   def new

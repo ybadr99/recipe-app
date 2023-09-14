@@ -1,14 +1,15 @@
 class RecipesController < ApplicationController
+  load_and_authorize_resource
   include RecipesHelper
 
   def index
-    @recipes = Recipe.includes(:recipe_foods)
+    @recipes = Recipe.includes(:recipe_foods).where(user_id: current_user.id)
     notice_message
   end
 
   def show
     notice_message
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.find(params[:id]).where(user_id: current_user.id)
   end
 
   def new
@@ -44,7 +45,8 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
 
     respond_to do |format|
-      if @recipe.destroy
+      if can? :destroy, @recipe
+        @recipe.destroy
         format.html { redirect_to recipes_path, notice: 'Recipe was successfully deleted.' }
         format.json { head :no_content }
       else
