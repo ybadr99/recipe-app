@@ -67,24 +67,10 @@ class RecipesController < ApplicationController
   end
 
   def general_shopping_list
-    @recipe_id = params[:recipe_id]
-    @inventory_id = params[:inventory_id]
-    @recipe = Recipe.find(params[:recipe_id])
-    @inventory = Inventory.find(params[:inventory_id])
-    recipe_foods = @recipe.recipe_foods.includes(:food)
-    inventory_foods = @inventory.inventory_foods.includes(:food)
-    @inventories = current_user.inventories
-    @missing_foods = []
-    @inventories.each do |inventory|
-      inventory_foods = inventory.inventory_foods.includes(:food)
-      missing_foods = inventory_foods.where.not(food_id: recipe_foods.pluck(:food_id))
-      @missing_foods.concat(missing_foods)
-    end
-    @missing_foods.uniq!
-
-    @total_value_needed = @missing_foods.sum do |missing_food|
-      missing_food.quantity * missing_food.food.price
-    end
+    @shopping_list = Food.includes(:recipe_foods).where(recipe_foods: { recipe_id: nil })
+    puts '===================='
+    puts @shopping_list.inspect
+    puts '===================='
   end
 
   private
