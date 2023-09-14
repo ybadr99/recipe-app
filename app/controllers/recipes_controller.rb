@@ -66,9 +66,9 @@ class RecipesController < ApplicationController
 
   def general_shopping_list
     @shopping_list = Food.includes(:recipe_foods).where(recipe_foods: { recipe_id: nil })
-    puts "===================="
+    puts '===================='
     puts @shopping_list.inspect
-    puts "===================="
+    puts '===================='
   end
 
   private
