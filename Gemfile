@@ -84,3 +84,5 @@ gem 'rubocop', '~> 1.56'
 gem 'devise', '~> 4.9'
 
 gem 'cancancan', '~> 3.5'
+
+gem "rspec-rails", "~> 6.0"
