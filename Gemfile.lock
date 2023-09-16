@@ -325,6 +325,7 @@ DEPENDENCIES
   popper_js (~> 2.11.8)
   puma (~> 5.0)
   rails (~> 7.0.7, >= 7.0.7.2)
+  rails-controller-testing
   rspec-rails (~> 6.0)
   rubocop (~> 1.56)
   sassc-rails (~> 2.1)

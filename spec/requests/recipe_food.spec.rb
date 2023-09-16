@@ -1,3 +1,6 @@
+# Tests for the RecipeFoodsController
+# /spec/requests/recipe_food.spec.rb
+
 require 'rails_helper'
 
 RSpec.describe RecipeFoodsController, type: :controller do

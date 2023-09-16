@@ -1,6 +1,9 @@
+# Test cases for the recipes controller
+# /spec/requests/recipes_controller_spec.rb
+
 require 'rails_helper'
 
-RSpec.describe 'Foods', type: :request do
+RSpec.describe 'Recipes', type: :request do
   include Devise::Test::IntegrationHelpers
 
   before do
@@ -8,9 +11,9 @@ RSpec.describe 'Foods', type: :request do
     sign_in @user
   end
 
-  describe 'GET /index' do
+  describe 'GET /recipes' do
     before do
-      get '/foods'
+      get '/recipes'
     end
 
     it 'returns a success response' do
@@ -20,15 +23,11 @@ RSpec.describe 'Foods', type: :request do
     it 'displays the index template' do
       expect(response).to render_template(:index)
     end
-
-    it 'includes "Food" in the response body' do
-      expect(response.body).to include('Food')
-    end
   end
 
-  describe 'GET /new' do
+  describe 'GET /recipes/new' do
     before do
-      get '/foods/new'
+      get '/recipes/new'
     end
 
     it 'returns a success response' do
@@ -39,8 +38,10 @@ RSpec.describe 'Foods', type: :request do
       expect(response).to render_template(:new)
     end
 
-    it 'includes "Food" in the response body' do
-      expect(response.body).to include('Food')
+    it 'includes "Create Recipe" in the response body' do
+      expect(response.body).to include('Create Recipe')
     end
   end
+
+  # You can add more test cases for other actions like show, create, edit, etc.
 end

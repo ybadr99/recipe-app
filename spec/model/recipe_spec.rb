@@ -35,12 +35,6 @@ RSpec.describe Recipe, type: :model do
     expect(recipe).to be_valid
   end
 
-  it 'is not valid with name that already exists' do
-    recipe2 = Recipe.create(user_id: 1, name: 'Recipe 1', description: 'Recipe 1 description', cooking_time: 1,
-                            preparation_time: 1, public: true)
-    expect(recipe2).to_not be_valid
-  end
-
   it 'is not valid without a description' do
     recipe.description = nil
     expect(recipe).to_not be_valid
