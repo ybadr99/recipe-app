@@ -17,10 +17,10 @@ RSpec.describe 'foods/new', type: :feature do
   it 'creates a new food' do
     visit new_food_path
 
-    fill_in :id => 'food_name', with: 'Food 1'
-    fill_in :id => 'food_measurement_unit', with: 'unit'
-    fill_in :id => 'food_price', with: 10.00
-    fill_in :id => 'food_quantity', with: 10
+    fill_in id: 'food_name', with: 'Food 1'
+    fill_in id: 'food_measurement_unit', with: 'unit'
+    fill_in id: 'food_price', with: 10.00
+    fill_in id: 'food_quantity', with: 10
 
     click_on 'Create Food'
 

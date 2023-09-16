@@ -17,13 +17,13 @@ RSpec.describe 'recipes/new', type: :feature do
   it 'creates a new recipe' do
     visit new_recipe_path
 
-    fill_in :name => 'recipe[name]', with: 'recipe name'
-    fill_in :id => 'recipe_description', with: 'recipe description'
-    fill_in :id => 'recipe_preparation_time', with: 10
-    fill_in :id => 'recipe_cooking_time', with: 10
+    fill_in name: 'recipe[name]', with: 'recipe name'
+    fill_in id: 'recipe_description', with: 'recipe description'
+    fill_in id: 'recipe_preparation_time', with: 10
+    fill_in id: 'recipe_cooking_time', with: 10
 
     click_on 'Create Recipe'
 
-    expect(page) .to have_current_path(recipes_path)
+    expect(page).to have_current_path(recipes_path)
   end
 end
