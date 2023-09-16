@@ -2,10 +2,9 @@
 require 'rails_helper'
 
 RSpec.describe Recipe, type: :model do
-  user = User.new(name: 'John Doe', email: 'local@host', password: '123456', password_confirmation: '123456')
-  before { user.save }
+  user = FactoryBot.create(:user)
 
-  recipe = Recipe.new(user:, name: 'Recipe 1', description: 'Recipe 1 description', cooking_time: 1,
+  recipe = Recipe.new(user: user, name: 'Recipe 1', description: 'Recipe 1 description', cooking_time: 1,
                       preparation_time: 1, public: true)
   before { recipe.save }
 
@@ -23,6 +22,12 @@ RSpec.describe Recipe, type: :model do
     recipe.name = 'ab'
     expect(recipe).to_not be_valid
     expect(recipe.errors[:name]).to include('Recipe name is too short (minimum is 3 characters)')
+  end
+
+  it 'is not valid with a name more than 50 characters' do
+    recipe.name = 'a' * 51
+    expect(recipe).to_not be_valid
+    expect(recipe.errors[:name]).to include('Recipe name is too long (maximum is 50 characters)')
   end
 
   it 'is valid with a name between 3 and 50 characters' do
@@ -65,6 +70,12 @@ RSpec.describe Recipe, type: :model do
     expect(recipe.errors[:cooking_time]).to include("Cooking time can't be blank")
   end
 
+  it 'is not valid with a cooking time less than 1' do
+    recipe.cooking_time = 0
+    expect(recipe).to_not be_valid
+    expect(recipe.errors[:cooking_time]).to include('Cooking time must be greater than 0')
+  end
+
   it 'is valid with a cooking time greater than 0' do
     recipe.cooking_time = 1
     expect(recipe).to be_valid
@@ -76,6 +87,12 @@ RSpec.describe Recipe, type: :model do
     expect(recipe.errors[:preparation_time]).to include("Preparation time can't be blank")
   end
 
+  it 'is not valid with a preparation time less than 1' do
+    recipe.preparation_time = 0
+    expect(recipe).to_not be_valid
+    expect(recipe.errors[:preparation_time]).to include('Preparation time must be greater than 0')
+  end
+
   it 'is valid with a preparation time greater than 0' do
     recipe.preparation_time = 1
     expect(recipe).to be_valid
@@ -84,7 +101,7 @@ RSpec.describe Recipe, type: :model do
   it 'is not valid without a public' do
     recipe.public = nil
     expect(recipe).to_not be_valid
-    expect(recipe.errors[:public]).to include('is not included in the list')
+    expect(recipe.errors[:public]).to include("is not included in the list")
   end
 
   it 'is valid with a public boolean value' do
@@ -98,17 +115,5 @@ RSpec.describe Recipe, type: :model do
     recipe.user_id = nil
     expect(recipe).to_not be_valid
     expect(recipe.errors[:user]).to include('must exist')
-  end
-
-  it 'is not valid with a cooking time less than 1' do
-    recipe.cooking_time = 0
-    expect(recipe).to_not be_valid
-    expect(recipe.errors[:cooking_time]).to include('must be greater than 0')
-  end
-
-  it 'is not valid with a preparation time less than 1' do
-    recipe.preparation_time = 0
-    expect(recipe).to_not be_valid
-    expect(recipe.errors[:preparation_time]).to include('must be greater than 0')
   end
 end

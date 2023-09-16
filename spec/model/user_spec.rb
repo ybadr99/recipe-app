@@ -56,4 +56,14 @@ RSpec.describe User, type: :model do
     user.password_confirmation = '1234569'
     expect(user).to be_valid
   end
+
+  describe 'Associations' do
+    user = FactoryBot.create(:user)
+    it 'should have many foods and recipes' do
+      user = User.reflect_on_association(:foods)
+      expect(user.macro).to eq(:has_many)
+      user = User.reflect_on_association(:recipes)
+      expect(user.macro).to eq(:has_many)
+    end
+  end
 end
