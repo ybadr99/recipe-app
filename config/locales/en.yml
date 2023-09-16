@@ -1,0 +1,104 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t "hello"
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t("hello") %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   "true": "foo"
+#
+# To learn more, please read the Rails Internationalization guide
+# available at https://guides.rubyonrails.org/i18n.html.
+
+en:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: "User name can't be blank"
+              too_short: "User name is too short (minimum is 3 characters)"
+              too_long: "User name is too long (maximum is 20 characters)"
+              taken: "User name already exists"
+            email:
+              blank: "Email can't be blank"
+              taken: "Email already exists"
+            password:
+              blank: "Password can't be blank"
+              too_short: "Password is too short (minimum is 6 characters)"
+            password_confirmation:
+              blank: "Password confirmation can't be blank"
+              confirmation: "Password confirmation doesn't match"           
+        recipe:
+          attributes:
+            name:
+              blank: "Recipe name can't be blank"
+              too_short: "Recipe name is too short (minimum is 3 characters)"
+              too_long: "Recipe name is too long (maximum is 50 characters)"
+              taken: "Recipe name already exists"
+            description:
+              blank: "Description can't be blank"
+              too_short: "Description is too short (minimum is 10 characters)"
+              too_long: "Description is too long (maximum is 500 characters)"
+            preparation_time:
+              blank: "Preparation time can't be blank"
+              greater_than: "Preparation time must be greater than 0"
+            cooking_time:
+              blank: "Cooking time can't be blank"
+              greater_than: "Cooking time must be greater than 0"
+            public:
+              blank: "Public can't be blank"
+              value: "Public must be true or false"
+            user:
+              blank: "User can't be blank"
+              taken: "User already exists"  
+        food:
+          attributes:
+            name:
+              blank: "Food name can't be blank"
+              too_short: "Food name is too short (minimum is 3 characters)"
+              too_long: "Food name is too long (maximum is 50 characters)"
+              taken: "Food name already exists"
+            measurement_unit:
+              blank: "Measurement unit can't be blank"
+              too_short: "Measurement unit is too short (minimum is 2 characters)"
+              too_long: "Measurement unit is too long (maximum is 10 characters)"
+            price:
+              blank: "Price can't be blank"
+              greater_than: "Price must be greater than 0"
+              less_than: "Price must be less than 1000"
+              not_a_number: "Price is not a number" 
+            quantity:
+              blank: "Quantity can't be blank"
+              greater_than: "Quantity must be greater than 0"
+              less_than: "Quantity must be less than 1000"
+              not_a_number: "Quantity must be a number"
+        recipe_food:
+          attributes:
+            food_id:
+              blank: "Food can't be blank"
+              taken: "Food already exists"
+            quantity:
+              blank: "Quantity can't be blank"
+              greater_than: "Quantity must be greater than 0"
+    

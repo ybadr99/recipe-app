@@ -1,0 +1,65 @@
+  <div class = "p-2">
+    <%= form.label :name, "Food Name:" %>
+    <%= form.text_field :name,
+        autofocus: true, 
+        autocomplete: 'name', 
+        placeholder: 'New Food Name', 
+        class: 'form-control' 
+    %>
+    <% if @food.errors.any? %>
+        <p class="text-danger mb-0">
+          <%= @food.errors[:name].first %>
+        </p>
+    <% end %>
+  </div>
+
+  <div class = "mt-2 p-2">
+    <%= form.label :measurement_unit, "Measurement Unit:" %>
+    <%= form.text_field :measurement_unit,
+        autofocus: true, 
+        autocomplete: 'measurement unit', 
+        placeholder: 'Measurement Unit', 
+        class: 'form-control' 
+    %>
+    <% if @food.errors.any? %>
+        <p class="text-danger mb-0">
+          <%= @food.errors[:measurement_unit].first %>
+        </p>
+    <% end %>
+  </div>
+
+  <div class = "mt-2 p-2">
+    <%= form.label :price, "Unit Price:" %>
+    <%= form.number_field :price, step: :any,
+        autofocus: true,
+        autocomplete: 'price',
+        placeholder: 'Unit Price',
+        class: 'form-control' 
+    %>
+    <% if @food.errors.any? %>
+        <p class="text-danger mb-0">
+          <%= @food.errors[:price].first %>
+        </p>
+    <% end %>
+  </div>
+
+  <div class = "mt-2 p-2">
+    <%= form.label :quantity, "Quantity:" %>
+    <%= form.number_field :quantity,
+        autofocus: true,
+        autocomplete: 'quantity',
+        placeholder: 'Quantity',
+        class: 'form-control' 
+    %>
+    <% if @food.errors.any? %>
+        <p class="text-danger mb-0">
+          <%= @food.errors[:quantity].first %>
+        </p>
+    <% end %>
+  </div>
+
+  <div class="actions d-flex justify-content-sm-between mt-4">
+    <%= form.submit class: 'btn btn-dark btn-sm' %>
+    <button type="button" class="btn btn-dark btn-sm px-3" data-bs-dismiss="modal">Cancel</button>
+  </div>
+

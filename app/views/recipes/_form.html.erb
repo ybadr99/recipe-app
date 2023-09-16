@@ -1,0 +1,74 @@
+<%= form_with(model: @recipe, url: recipes_path, local: true) do |form| %>
+  <div class = "mt-4 p-2">
+    <%= select_tag(:public, options_for_select([['Select Status', 'Status'], ['Public', 'Public'], ['Private', 'Private']], 'Status'),
+      class: 'form-select')
+    %>
+    <% if @recipe.errors.any? %>
+        <p class="text-danger mb-0">
+          <%= @recipe.errors[:status].first %>
+        </p>
+    <% end %>
+  </div>
+
+	<div class = "mt-2 p-2">
+		<%= form.text_field :name,
+        autofocus: true, 
+        autocomplete: 'name', 
+        placeholder: 'New recipe name', 
+        class: 'form-control' 
+    %>
+    <% if @recipe.errors.any? %>
+        <p class="text-danger mb-0">
+          <%= @recipe.errors[:name].first %>
+        </p>
+    <% end %>
+	</div>
+
+  <div class = "mt-2 p-2">
+    <%= form.number_field :preparation_time,
+        autofocus: true,
+        autocomplete: 'preparation_time',
+        placeholder: 'Preparation time in hour(s)',
+        class: 'form-control'
+    %>
+    <% if @recipe.errors.any? %>
+        <p class="text-danger mb-0">
+          <%= @recipe.errors[:preparation_time].first %>
+        </p>
+    <% end %>
+  </div>
+
+  <div class = "mt-2 p-2">
+    <%= form.number_field :cooking_time,
+        autofocus: true,
+        autocomplete: 'cooking_time',
+        placeholder: 'Cooking time in hour(s)',
+        class: 'form-control'
+    %>
+    <% if @recipe.errors.any? %>
+        <p class="text-danger mb-0">
+          <%= @recipe.errors[:cooking_time].first %>
+        </p>
+    <% end %>
+  </div>
+
+	<div class = "mt-2 p-2">
+		<%= form.text_area :description, rows: "5",
+        autofocus: true, 
+        autocomplete: 'description', 
+        placeholder: 'Description of the recipe', 
+        class: 'form-control' 
+    %>
+    <% if @recipe.errors.any? %>
+        <p class="text-danger mb-0">
+          <%= @recipe.errors[:description].first %>
+        </p>
+    <% end %>
+  </div>
+
+  <div class="actions d-flex justify-content-sm-between mt-4">
+    <%= form.submit class: 'btn btn-dark btn-sm' %>
+    <button type="button" class="btn btn-dark btn-sm px-3" data-bs-dismiss="modal">Cancel</button>
+  </div>
+<% end %>
+
