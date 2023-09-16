@@ -4,7 +4,7 @@ require 'rails_helper'
 RSpec.describe Recipe, type: :model do
   user = FactoryBot.create(:user)
 
-  recipe = Recipe.new(user: user, name: 'Recipe 1', description: 'Recipe 1 description', cooking_time: 1,
+  recipe = Recipe.new(user:, name: 'Recipe 1', description: 'Recipe 1 description', cooking_time: 1,
                       preparation_time: 1, public: true)
   before { recipe.save }
 
@@ -101,7 +101,7 @@ RSpec.describe Recipe, type: :model do
   it 'is not valid without a public' do
     recipe.public = nil
     expect(recipe).to_not be_valid
-    expect(recipe.errors[:public]).to include("is not included in the list")
+    expect(recipe.errors[:public]).to include('is not included in the list')
   end
 
   it 'is valid with a public boolean value' do

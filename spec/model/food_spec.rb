@@ -4,7 +4,7 @@ require 'rails_helper'
 RSpec.describe Food, type: :model do
   user = FactoryBot.create(:user)
 
-  food = Food.new(user: user, name: 'Food 1', measurement_unit: 'kg', price: 1, quantity: 1)
+  food = Food.new(user:, name: 'Food 1', measurement_unit: 'kg', price: 1, quantity: 1)
   before { food.save }
 
   it 'is valid with valid attributes' do
@@ -13,7 +13,7 @@ RSpec.describe Food, type: :model do
 
   it 'is not valid without a name' do
     food.name = nil
-    expect(food).to_not be_valid 
+    expect(food).to_not be_valid
     expect(food.errors[:name]).to include("Food name can't be blank")
   end
 
@@ -51,7 +51,7 @@ RSpec.describe Food, type: :model do
     expect(food).to_not be_valid
     expect(food.errors[:measurement_unit]).to include('Measurement unit is too long (maximum is 10 characters)')
   end
-  
+
   it 'is valid with a measurement_unit between 2 and 10 characters' do
     food.measurement_unit = 'a' * 5
     expect(food).to be_valid
@@ -80,7 +80,7 @@ RSpec.describe Food, type: :model do
     expect(food).to_not be_valid
     expect(food.errors[:price]).to include('Price must be less than 1000')
   end
-  
+
   it 'is not valid with a price that is not a number' do
     food.price = 'a'
     expect(food).to_not be_valid

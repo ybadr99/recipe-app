@@ -2,12 +2,12 @@ require 'rails_helper'
 
 RSpec.describe RecipeFood, type: :model do
   user = FactoryBot.create(:user)
-  recipe = Recipe.new(user: user, name: 'Recipe 1', description: 'Recipe 1 description', cooking_time: 1,
+  recipe = Recipe.new(user:, name: 'Recipe 1', description: 'Recipe 1 description', cooking_time: 1,
                       preparation_time: 1, public: true)
-  food = Food.new(user: user, name: 'Food 1', measurement_unit: 'kg', price: 1, quantity: 1)
+  food = Food.new(user:, name: 'Food 1', measurement_unit: 'kg', price: 1, quantity: 1)
   before { recipe.save && food.save }
 
-  recipe_food = RecipeFood.new(recipe: recipe, food: food, quantity: 1)
+  recipe_food = RecipeFood.new(recipe:, food:, quantity: 1)
   before { recipe_food.save }
 
   it 'is valid with valid attributes' do
@@ -42,7 +42,7 @@ RSpec.describe RecipeFood, type: :model do
       expect(association.macro).to eq(:belongs_to)
     end
   end
-  
+
   describe 'validations' do
     it 'validates presence of quantity' do
       recipe_food = RecipeFood.new
@@ -56,7 +56,7 @@ RSpec.describe RecipeFood, type: :model do
       expect(recipe_food.errors[:recipe]).to include('must exist')
     end
 
-    it 'validates presence of food' do 
+    it 'validates presence of food' do
       recipe_food = RecipeFood.new
       expect(recipe_food.valid?).to be_falsey
       expect(recipe_food.errors[:food]).to include('must exist')

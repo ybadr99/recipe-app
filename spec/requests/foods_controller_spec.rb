@@ -43,5 +43,4 @@ RSpec.describe 'Foods', type: :request do
       expect(response.body).to include('Food')
     end
   end
-
 end

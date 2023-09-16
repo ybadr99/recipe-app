@@ -4,8 +4,11 @@ RSpec.describe RecipeFoodsController, type: :controller do
   include Devise::Test::ControllerHelpers
 
   let(:user) { User.create(name: 'example', email: 'example@example.com', password: 'password') }
-  let(:food) { Food.create(name: 'Food Item', measurement_unit: 'grams', price: 10.99, quantity: 100, user: user) }
-  let(:recipe) { Recipe.create(name: 'Recipe', description: 'Recipe Description', cooking_time: 60, preparation_time: 30, public: true, user: user) }
+  let(:food) { Food.create(name: 'Food Item', measurement_unit: 'grams', price: 10.99, quantity: 100, user:) }
+  let(:recipe) do
+    Recipe.create(name: 'Recipe', description: 'Recipe Description', cooking_time: 60, preparation_time: 30, public: true,
+                  user:)
+  end
 
   before { sign_in user }
 
@@ -31,9 +34,9 @@ RSpec.describe RecipeFoodsController, type: :controller do
   describe 'POST #create' do
     context 'with valid params' do
       it 'creates a new RecipeFood' do
-        expect {
+        expect do
           post :create, params: { recipe_food: { quantity: 10, recipe_id: recipe.id, food_id: food.id } }
-        }.to change(RecipeFood, :count).by(1)
+        end.to change(RecipeFood, :count).by(1)
       end
 
       it 'redirects to the created Recipe' do
@@ -49,9 +52,9 @@ RSpec.describe RecipeFoodsController, type: :controller do
 
     context 'with invalid params' do
       it 'does not create a new RecipeFood' do
-        expect {
+        expect do
           post :create, params: { recipe_food: { quantity: -1, recipe_id: recipe.id, food_id: food.id } }
-        }.not_to change(RecipeFood, :count)
+        end.not_to change(RecipeFood, :count)
       end
 
       it 're-renders the new template' do
