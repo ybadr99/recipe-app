@@ -7,7 +7,7 @@ RSpec.describe RecipeFoodsController, type: :controller do
   let(:food) { Food.create(name: 'Food Item', measurement_unit: 'grams', price: 10.99, quantity: 100, user:) }
   let(:recipe) do
     Recipe.create(name: 'Recipe', description: 'Recipe Description', cooking_time: 60, preparation_time: 30,
-      public: true, user:)
+                  public: true, user:)
   end
 
   before { sign_in user }
